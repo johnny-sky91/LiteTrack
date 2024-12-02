@@ -6,8 +6,10 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('expenses.index') }}">Expenses</a>
-        <a href="{{ url_for('weight.index') }}">Weight</a>
+        <a href="{{ url_for('expenses.all_expenses') }}">Expenses</a>
+        <a href="{{ url_for('weight.all_records') }}">Weight</a>
+        <a href="{{ url_for('auth.register') }}">Register</a>
+
     </nav>
     <hr>
     <div class="content">
