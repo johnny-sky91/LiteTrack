@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LiteTrack - FlaskApp</title>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('expenses.index') }}">Expenses</a>
+        <a href="{{ url_for('weight.index') }}">Weight</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
