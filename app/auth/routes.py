@@ -9,7 +9,7 @@ from app.auth.forms import RegistrationForm, LoginForm
 @bp.route("/register", methods=["GET", "POST"])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for("all_complaints"))
+        return redirect(url_for("/login"))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)

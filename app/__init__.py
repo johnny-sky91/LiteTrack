@@ -1,7 +1,8 @@
 from flask import Flask, render_template
+from flask_login import login_required
 
 from config import Config
-from .extensions import db, migrate, login
+from .extensions import db, migrate, login_manager
 
 
 def create_app(config_class=Config):
@@ -11,7 +12,8 @@ def create_app(config_class=Config):
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
-    login.init_app(app)
+    login_manager.init_app(app)
+    login_manager.login_view = "auth.login"
 
     # Register blueprints here
     from app.auth import bp as auth_bp
@@ -22,7 +24,10 @@ def create_app(config_class=Config):
     app.register_blueprint(expenses_bp)
     app.register_blueprint(weight_bp)
 
+    from app.models import auth, expenses, weight
+
     @app.route("/")
+    @login_required
     def main_page():
         return render_template("index.html")
 
